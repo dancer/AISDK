@@ -1,33 +1,90 @@
+<div align="center">
+
 # aisdk discord bot
 
-discord bot for monitoring vercel/ai
+[![Python](https://img.shields.io/badge/python-3.13-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Discord](https://img.shields.io/badge/discord.py-latest-7289da?style=for-the-badge&logo=discord&logoColor=white)](https://discordpy.readthedocs.io)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+
+**real-time monitoring for vercel/ai repository**
+
+[Features](#features) • [Setup](#setup) • [Commands](#commands)
+
+</div>
+
+---
+
+## features
+
+<details>
+<summary><b>monitoring</b></summary>
+
+- **github** - pull requests, issues, releases with auto reactions
+- **npm** - package updates for ai sdk
+- **persistence** - survives restarts, catches missed events
+
+</details>
+
+<details>
+<summary><b>discord</b></summary>
+
+- **channels** - #prs, #issues, #releases, #npm
+- **embeds** - clean formatting with image support
+- **reactions** - :merge:, :closed:, :fixed: custom emojis
+
+</details>
+
+---
 
 ## setup
 
 ```bash
-git clone https://github.com/dancer/aisdk.git
-cd aisdk
+# clone
+git clone https://github.com/dancer/aisdk.git && cd aisdk
 
-python3 -m venv venv
-source venv/bin/activate
+# install
+python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
+# configure
 cp .env.example .env
 # add tokens and channel ids
 
+# run
 python main.py
 ```
 
+<details>
+<summary><b>environment</b></summary>
+
+```env
+DISCORD_TOKEN=your_bot_token
+GITHUB_TOKEN=your_github_token
+OWNER_ID=your_discord_id
+CHANNEL_PRS=channel_id
+CHANNEL_ISSUES=channel_id
+CHANNEL_RELEASES=channel_id
+CHANNEL_NPM=channel_id
+```
+
+</details>
+
+---
+
 ## commands
 
-- `?help` - show help
-- `?fetch <number>` - fetch issue/pr
-- `?releases` - latest release
-- `?issuesall` - import all issues
-- `?prsall` - import all prs
+| command | description | access |
+|---------|-------------|--------|
+| `?help` | show help | all |
+| `?fetch <id>` | fetch issue/pr | owner |
+| `?releases` | latest release | owner |
+| `?issuesall` | import issues | owner |
+| `?prsall` | import prs | owner |
 
-## features
+<div align="center">
 
-- monitors prs, issues, releases, npm
-- auto reactions on close/merge
-- persists state across restarts
+**built for the ai sdk community**
+
+[![GitHub](https://img.shields.io/github/stars/dancer/aisdk?style=social)](https://github.com/dancer/aisdk)
+
+</div>
