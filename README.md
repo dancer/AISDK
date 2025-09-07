@@ -1,16 +1,11 @@
-<div align="center">
-
 # aisdk discord bot
 
 [![Python](https://img.shields.io/badge/python-3.13-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Discord](https://img.shields.io/badge/discord.py-latest-7289da?style=for-the-badge&logo=discord&logoColor=white)](https://discordpy.readthedocs.io)
-[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 
 **real-time monitoring for vercel/ai repository**
 
 [Features](#features) • [Setup](#setup) • [Commands](#commands)
-
-</div>
 
 ---
 
@@ -81,10 +76,8 @@ CHANNEL_NPM=channel_id
 | `?issuesall` | import issues | owner |
 | `?prsall` | import prs | owner |
 
-<div align="center">
+---
 
 **built for the ai sdk community**
 
 [![GitHub](https://img.shields.io/github/stars/dancer/aisdk?style=social)](https://github.com/dancer/aisdk)
-
-</div>
