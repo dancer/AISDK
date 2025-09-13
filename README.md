@@ -14,8 +14,8 @@
 <details>
 <summary><b>monitoring</b></summary>
 
-- **github** - pull requests, issues, releases with auto reactions
-- **npm** - package updates for ai sdk
+- **github** - pull requests, issues with auto reactions
+- **npm** - package releases for ai sdk
 - **persistence** - survives restarts, catches missed events
 
 </details>
@@ -23,9 +23,10 @@
 <details>
 <summary><b>discord</b></summary>
 
-- **channels** - #prs, #issues, #releases, #npm
+- **channels** - #prs, #issues, #releases, #ai
 - **embeds** - clean formatting with image support
-- **reactions** - :merge:, :closed:, :fixed: custom emojis
+- **reactions** - auto reactions for closed/merged items
+- **ai channel** - enforces "ai" only messages
 
 </details>
 
@@ -59,7 +60,7 @@ OWNER_ID=your_discord_id
 CHANNEL_PRS=channel_id
 CHANNEL_ISSUES=channel_id
 CHANNEL_RELEASES=channel_id
-CHANNEL_NPM=channel_id
+CHANNEL_AI=channel_id
 ```
 
 </details>
@@ -71,11 +72,17 @@ CHANNEL_NPM=channel_id
 | command | description | access |
 |---------|-------------|--------|
 | `?help` | show help | all |
+| `?helpowner` | list all commands | owner |
+| `?init` | initialize timestamps | owner |
 | `?fetch <id>` | fetch issue/pr | owner |
-| `?releases` | latest release | owner |
-| `?issuesall` | import issues | owner |
-| `?prsall` | import prs | owner |
-| `?welcome <@user>` | welcome user | owner |
+| `?releases` | latest github release | owner |
+| `?npmlatest` | latest npm release | owner |
+| `?npmall` | import all npm releases | owner |
+| `?issuesall` | import all issues | owner |
+| `?prsall` | import all prs | owner |
+| `?rules` | display server rules | owner |
+| `?welcome` | welcome message | owner |
+| `?bugs` | bug reporting guide | owner |
 
 ---
 
