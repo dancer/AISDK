@@ -16,39 +16,41 @@ class Rules(commands.Cog):
             color=0xFFFFFF
         )
         
+        embed.set_footer(text='▲ Vercel x AI SDK')
+        
         embed.add_field(
-            name='1. reporting issues',
-            value='found a bug or issue with the ai sdk? please report it on [github issues](https://github.com/vercel/ai/issues)',
+            name='1. Reporting Issues',
+            value='Found a bug or issue with the AI SDK? Please report it on [GitHub Issues](https://github.com/vercel/ai/issues)',
             inline=False
         )
         
         embed.add_field(
-            name='2. asking questions',
-            value='have questions about the ai sdk? ask in <#1414092320046846062>',
+            name='2. Asking Questions',
+            value='Have questions about the AI SDK? Ask in <#1414092320046846062>',
             inline=False
         )
         
         embed.add_field(
-            name='3. stay on topic',
-            value='keep discussions related to vercel ai sdk and ai development',
+            name='3. Stay on Topic',
+            value='Keep discussions related to Vercel AI SDK and AI development',
             inline=False
         )
         
         embed.add_field(
-            name='4. be respectful',
-            value='treat all members with respect and maintain professional conduct',
+            name='4. Be Respectful',
+            value='Treat all members with respect and maintain professional conduct',
             inline=False
         )
         
         embed.add_field(
-            name='5. no spam',
-            value='avoid duplicate messages, excessive mentions, or promotional content',
+            name='5. No Spam',
+            value='Avoid duplicate messages, excessive mentions, or promotional content',
             inline=False
         )
         
         embed.add_field(
-            name='6. use appropriate channels',
-            value='post in the correct channels to keep discussions organized',
+            name='6. Use Appropriate Channels',
+            value='Post in the correct channels to keep discussions organized',
             inline=False
         )
         

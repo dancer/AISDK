@@ -13,5 +13,5 @@ channels = {
     'prs': int(os.getenv('CHANNEL_PRS', 0)),
     'issues': int(os.getenv('CHANNEL_ISSUES', 0)),
     'releases': int(os.getenv('CHANNEL_RELEASES', 0)),
-    'npm': int(os.getenv('CHANNEL_NPM', 0))
+    'ai': int(os.getenv('CHANNEL_AI', 0))
 }

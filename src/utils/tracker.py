@@ -1,43 +1,73 @@
 import json
 import os
 
-tracker_file = 'tracker.json'
-
-def load():
-    if os.path.exists(tracker_file):
-        with open(tracker_file, 'r') as f:
+def loadfile(filename):
+    if os.path.exists(filename):
+        with open(filename, 'r') as f:
             return json.load(f)
-    return {'issues': {}, 'prs': {}}
+    return {}
 
-def save(data):
-    with open(tracker_file, 'w') as f:
+def savefile(filename, data):
+    with open(filename, 'w') as f:
         json.dump(data, f, indent=2)
 
-def track(item_type, number, message_id, channel_id):
-    data = load()
-    key = str(number)
-    data[item_type][key] = {
-        'message_id': message_id,
-        'channel_id': channel_id,
-        'reacted': False
-    }
-    save(data)
+def track(item_type, identifier, message_id, channel_id):
+    filename = f'{item_type}.json'
+    data = loadfile(filename)
+    
+    if item_type == 'releases':
+        data[identifier] = {
+            'message_id': message_id,
+            'channel_id': channel_id,
+            'timestamp': identifier
+        }
+    else:
+        data[str(identifier)] = {
+            'message_id': message_id,
+            'channel_id': channel_id,
+            'reacted': False
+        }
+    
+    savefile(filename, data)
 
 def markreacted(item_type, number):
-    data = load()
+    filename = f'{item_type}.json'
+    data = loadfile(filename)
     key = str(number)
-    if key in data[item_type]:
-        data[item_type][key]['reacted'] = True
-        save(data)
+    if key in data:
+        data[key]['reacted'] = True
+        savefile(filename, data)
 
 def markunreacted(item_type, number):
-    data = load()
+    filename = f'{item_type}.json'
+    data = loadfile(filename)
     key = str(number)
-    if key in data[item_type]:
-        data[item_type][key]['reacted'] = False
-        save(data)
+    if key in data:
+        data[key]['reacted'] = False
+        savefile(filename, data)
 
-def get(item_type, number):
-    data = load()
-    key = str(number)
-    return data[item_type].get(key)
+def get(item_type, identifier):
+    filename = f'{item_type}.json'
+    data = loadfile(filename)
+    key = str(identifier) if item_type != 'releases' else identifier
+    return data.get(key)
+
+def hasreleasebeensent(version):
+    data = loadfile('releases.json')
+    return version in data
+
+def migrateolddata():
+    if os.path.exists('tracker.json'):
+        with open('tracker.json', 'r') as f:
+            olddata = json.load(f)
+        
+        if 'issues' in olddata:
+            savefile('issues.json', olddata['issues'])
+        
+        if 'prs' in olddata:
+            savefile('prs.json', olddata['prs'])
+        
+        os.rename('tracker.json', 'tracker.json.backup')
+        print('migrated tracker.json to separate files (backup saved as tracker.json.backup)')
+
+migrateolddata()

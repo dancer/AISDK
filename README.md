@@ -75,6 +75,7 @@ CHANNEL_NPM=channel_id
 | `?releases` | latest release | owner |
 | `?issuesall` | import issues | owner |
 | `?prsall` | import prs | owner |
+| `?welcome <@user>` | welcome user | owner |
 
 ---
 

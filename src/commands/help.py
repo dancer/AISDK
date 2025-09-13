@@ -17,11 +17,10 @@ class Help(commands.Cog):
         prs_channel = f'<#{config.channels["prs"]}>' if config.channels['prs'] else '#prs'
         issues_channel = f'<#{config.channels["issues"]}>' if config.channels['issues'] else '#issues'
         releases_channel = f'<#{config.channels["releases"]}>' if config.channels['releases'] else '#releases'
-        npm_channel = f'<#{config.channels["npm"]}>' if config.channels['npm'] else '#npm'
         
         embed.add_field(
             name='monitoring',
-            value=f'• [pull requests](https://github.com/vercel/ai/pulls) → {prs_channel}\n• [issues](https://github.com/vercel/ai/issues) → {issues_channel}\n• [releases](https://github.com/vercel/ai/releases) → {releases_channel}\n• [npm updates](https://www.npmjs.com/package/ai) → {npm_channel}',
+            value=f'• [pull requests](https://github.com/vercel/ai/pulls) → {prs_channel}\n• [issues](https://github.com/vercel/ai/issues) → {issues_channel}\n• [npm releases](https://www.npmjs.com/package/ai) → {releases_channel}',
             inline=False
         )
         

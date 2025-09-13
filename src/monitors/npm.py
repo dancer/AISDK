@@ -1,7 +1,7 @@
 import aiohttp
 from datetime import datetime
 from src import config
-from src.utils import state
+from src.utils import state, tracker
 from src.formatters.embed import formatnpm
 
 async def checknpm(sendwebhook, bot):
@@ -13,9 +13,10 @@ async def checknpm(sendwebhook, bot):
                 latest = data['dist-tags']['latest']
                 modified = data['time'][latest]
                 
-                if state.last_check['npm']:
-                    if datetime.fromisoformat(modified.replace('Z', '+00:00')) > state.last_check['npm']:
-                        await sendwebhook('npm', formatnpm(latest, data['versions'][latest]))
+                if not tracker.hasreleasebeensent(latest):
+                    message = await sendwebhook('releases', formatnpm(latest, data['versions'][latest]))
+                    if message:
+                        tracker.track('releases', latest, message.id, message.channel.id)
                 
                 state.last_check['npm'] = datetime.fromisoformat(modified.replace('Z', '+00:00'))
                 state.save(state.last_check)
